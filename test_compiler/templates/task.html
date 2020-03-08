@@ -49,7 +49,7 @@ end.
         const data={
             pascal_code: document.getElementById("code").value,
         };
-        $.get('{% url 'codetest' %}', data, function(data, status){
+        $.post('{% url 'codetest' %}', data, function(data, status){
             editor.setValue(data.data);
         });
     }

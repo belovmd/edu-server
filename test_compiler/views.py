@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 # Create your views here.
+from django.views.decorators.csrf import ensure_csrf_cookie
 
+
+@ensure_csrf_cookie
 def index(request):
     """
     Функция отображения для домашней страницы сайта.
