@@ -1,0 +1,245 @@
+{# Load the tag library #}
+{% load bootstrap4 %}
+{% load static %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .btn-custom {
+          width: 200px;
+          margin: 5px 5px 5px 5px;
+        }
+        {#body {#}
+        {#  margin: 40px;#}
+        {#  font-family: 'Open Sans', 'sans-serif';#}
+        {#  background-color: #fff;#}
+        {#  color: #444;#}
+    </style>
+</head>
+
+
+
+
+
+<body>
+{#  <div class="d-flex" id="wrapper">#}
+{##}
+{#    <!-- Sidebar -->#}
+{#    <div class="bg-light border-right" id="sidebar-wrapper">#}
+{#      <div class="sidebar-heading">Start Bootstrap </div>#}
+{#      <div class="list-group list-group-flush">#}
+{#        <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>#}
+{#        <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>#}
+{#        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>#}
+{#        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>#}
+{#        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>#}
+{#        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>#}
+{#      </div>#}
+{#    </div>#}
+{#    <!-- /#sidebar-wrapper -->#}
+{##}
+{#    <!-- Page Content -->#}
+{#    <div id="page-content-wrapper">#}
+{##}
+{#      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">#}
+{#        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>#}
+{##}
+{#        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">#}
+{#          <span class="navbar-toggler-icon"></span>#}
+{#        </button>#}
+{##}
+{#        <div class="collapse navbar-collapse" id="navbarSupportedContent">#}
+{#          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">#}
+{#            <li class="nav-item active">#}
+{#              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#              <a class="nav-link" href="#">Link</a>#}
+{#            </li>#}
+{#            <li class="nav-item dropdown">#}
+{#              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#                Dropdown#}
+{#              </a>#}
+{#              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">#}
+{#                <a class="dropdown-item" href="#">Action</a>#}
+{#                <a class="dropdown-item" href="#">Another action</a>#}
+{#                <div class="dropdown-divider"></div>#}
+{#                <a class="dropdown-item" href="#">Something else here</a>#}
+{#              </div>#}
+{#            </li>#}
+{#          </ul>#}
+{#        </div>#}
+{#      </nav>#}
+{##}
+{#      <div class="container-fluid">#}
+{#        <h1 class="mt-4">Simple Sidebar</h1>#}
+{#        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et commodo velit, eget venenatis metus. Aenean fermentum eget nisi vel semper. Suspendisse facilisis augue sit amet sapien aliquet aliquet. Cras tincidunt interdum ex ac mollis. In hac habitasse platea dictumst. Praesent tempus diam sed elementum ultricies. Phasellus elementum urna sit amet tortor imperdiet, et pharetra nibh condimentum. Nulla facilisi. Etiam consectetur faucibus odio, vel fermentum massa lacinia eget. Suspendisse id imperdiet libero. Morbi tellus purus, tristique nec quam sit amet, semper lobortis nibh. Quisque volutpat, orci vel elementum viverra, nibh lacus eleifend diam, nec eleifend velit orci ac nisl.#}
+{##}
+{#Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pulvinar eu ex vitae tincidunt. Nulla bibendum eu nisi in dictum. Suspendisse quis commodo mi. Ut mattis ultricies pretium. Curabitur sodales elit id ligula vehicula mollis. Fusce molestie condimentum nisl vulputate auctor. Morbi ornare sed magna ut mattis. Vestibulum in bibendum libero. Quisque vitae magna enim. Praesent in porttitor ligula.#}
+{##}
+{#Maecenas sit amet nunc facilisis, ultrices ex at, lacinia neque. Donec eu dolor eu eros viverra efficitur. Ut efficitur porttitor ligula id gravida. Morbi facilisis turpis ut urna sodales, at euismod neque porttitor. Curabitur sapien tellus, laoreet eget gravida in, aliquam nec sapien. Praesent eget commodo quam. Morbi vulputate mauris nec pellentesque varius. Phasellus ut ipsum vel nunc laoreet posuere id at velit. Vivamus ac metus mattis, mattis mauris eget, pellentesque justo. Mauris tellus ipsum, mattis eu leo non, finibus rhoncus felis. Suspendisse faucibus vel massa ac tincidunt. Curabitur pretium consequat convallis.#}
+{##}
+{#Etiam turpis mauris, consectetur quis lorem eget, tincidunt mollis elit. Vivamus vitae quam tellus. Aenean lacus nisl, sollicitudin at nisl nec, cursus viverra libero. Cras vel malesuada dolor. Duis suscipit fermentum est. Integer malesuada pharetra malesuada. Duis at purus nec nulla commodo tempor et eget elit. Praesent ac malesuada arcu. Aliquam ut varius libero, id consequat dolor. Phasellus orci eros, molestie id lacus vitae, convallis rhoncus massa. Pellentesque faucibus fringilla dolor pellentesque iaculis. Nunc blandit mi id porta hendrerit. Curabitur id ipsum eros.#}
+{##}
+{#Vestibulum eu purus ante. Nam malesuada nec lorem vel tempus. Donec pulvinar diam ut est egestas, nec lobortis magna mattis. Nullam consequat tellus id ipsum scelerisque, quis eleifend arcu luctus. Curabitur non lacinia sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur arcu nibh, posuere non nulla ut, ornare finibus lacus.      </div>#}
+{#    </div>#}
+{#    <!-- /#page-content-wrapper -->#}
+{##}
+{#  </div>#}
+{#  <!-- /#wrapper -->#}
+{##}
+{#  <!-- Bootstrap core JavaScript -->#}
+{#  <script src="vendor/jquery/jquery.min.js"></script>#}
+{#  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>#}
+{##}
+{#  <!-- Menu Toggle Script -->#}
+{#  <script>#}
+{#    $("#menu-toggle").click(function(e) {#}
+{#      e.preventDefault();#}
+{#      $("#wrapper").toggleClass("toggled");#}
+{#    });#}
+{#  </script>#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{##}
+        <header>
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pricing</a>
+                        </li>
+                    </ul>
+                    <span class="navbar-text">
+              Navbar text with an inline element
+            </span>
+                </div>
+            </nav>
+        </header>
+{#        <div class="container" style="margin-top: 0.5rem;">#}
+{#            <div class="row">#}
+{#                <div class="col-md-9 pr-md-1 pl-md-0" align="middle" style="max-height: 80%">#}
+{#                         max-width: 100%;#}
+{#                         margin-bottom: 40px">#}
+{#                    <div class="p-3 border border-primary rounded">#}
+{#                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ex lorem, sollicitudin eu dictum nec, laoreet a metus. Vivamus tristique turpis convallis enim tempor, nec condimentum dui maximus. Etiam varius metus dignissim nibh euismod hendrerit. Sed vitae molestie nisi, quis tincidunt mi. Cras at ultricies quam. Vestibulum viverra id lorem nec pharetra. Curabitur efficitur erat mauris, eu lacinia nibh scelerisque sit amet. Curabitur urna dui, egestas ut neque vel, pretium sodales ex. Suspendisse vehicula, neque quis hendrerit feugiat, justo ante interdum tellus, eu semper nulla turpis in ex. Curabitur sollicitudin vel ex vitae consequat. Pellentesque at est dolor.#}
+{##}
+{#Curabitur sollicitudin in orci ac venenatis. Integer massa libero, blandit nec urna eget, gravida scelerisque nisi. Proin interdum augue non urna auctor porta. Cras convallis, magna vitae blandit consequat, risus urna dignissim ante, a pharetra orci lectus at metus. Donec sit amet vestibulum quam. Nulla suscipit est elit, ac suscipit metus efficitur sed. Phasellus mattis convallis nisl, eu volutpat orci faucibus ac. Sed id purus quis nibh aliquam vulputate. Maecenas volutpat sem in lorem elementum tristique. Donec iaculis, libero sit amet rutrum venenatis, turpis risus lobortis eros, quis eleifend tellus elit eget felis. Sed quis mauris fermentum, dapibus quam vitae, venenatis urna. Aliquam erat volutpat. Nam dapibus tellus quis lobortis dignissim. Morbi quis rhoncus magna, non mollis augue. Duis malesuada nisl odio, id ornare justo elementum ultricies.#}
+{##}
+{#Sed iaculis consectetur velit quis interdum. Morbi libero libero, varius ut quam sit amet, imperdiet rutrum neque. Aliquam nisl libero, condimentum sit amet diam quis, efficitur hendrerit ligula. Etiam ac ornare enim. Curabitur ut ullamcorper diam. Aliquam fermentum placerat libero, id condimentum libero interdum eget. Phasellus aliquam lacus lacinia erat suscipit mollis. In quam ex, consequat id est at, convallis interdum ante. Duis venenatis varius ligula, ut iaculis mi vestibulum suscipit. Ut nulla justo, accumsan quis pretium eu, bibendum ut ipsum. Phasellus feugiat lectus sed orci placerat sodales. Suspendisse malesuada tortor dolor, a interdum libero vestibulum quis. Aenean sed sagittis nibh, vitae volutpat risus.#}
+{##}
+{#Ut sodales posuere suscipit. Praesent finibus nulla turpis, at elementum ipsum consectetur id. Maecenas a nulla consectetur, luctus diam et, viverra augue. Morbi luctus elementum ligula, ac lacinia elit fringilla nec. Aenean varius nunc a bibendum placerat. Maecenas et vulputate ipsum. Integer aliquam eleifend sem, a sodales enim efficitur at. Proin ut eros rhoncus velit scelerisque efficitur quis quis arcu. Phasellus ornare turpis vitae viverra ultrices. Cras quis odio sed odio vulputate tempor. Integer et magna ex.#}
+{##}
+{#Aliquam tincidunt varius orci et posuere. Vestibulum lectus quam, mattis at erat nec, elementum mattis lacus. Aliquam auctor massa et nibh sagittis consequat. Phasellus bibendum sodales urna quis pretium. Proin diam quam, tempor id ex quis, volutpat vestibulum orci. Nam eleifend id odio in pulvinar. Nulla facilisi. Etiam pulvinar luctus lacus, at posuere leo ullamcorper at. Curabitur euismod molestie purus ac lobortis. Aenean facilisis, tortor nec cursus auctor, risus diam consectetur ipsum, eu semper tortor tellus quis magna. Phasellus quis ligula quis quam porttitor gravida. Nulla facilisis blandit tristique. Vivamus nec justo vel magna fermentum sollicitudin quis et ante. Sed sit amet purus nulla.#}
+{#</div>#}
+{##}
+{#                </div>#}
+{#                <div class="col-md-3 border border-primary rounded" align="center" style="margin-bottom: 40px;">#}
+{#                    <div class="position-fixed border" align="center" width="%" >#}
+{#                        <button class="btn btn-success btn-custom">#}
+{#                            <span>Button 1</span>#}
+{#                        </button>#}
+{#                        <br>#}
+{#                        <button class="btn btn-warning btn-custom">#}
+{#                            <span>Button 2</span>#}
+{#                        </button>#}
+{#                        <button class="btn btn-danger btn-custom">#}
+{#                            <span>Button 3</span>#}
+{#                        </button>#}
+{#                    </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-flex m-4 mt-sm-1">
+{#    <div class="row mb-1">#}
+{#        <div class="col-sm-12 border border-primary rounded">HEADER</div>#}
+{#    </div>#}
+      <div class="row mb-1">
+        <div class="col-sm-9 pr-sm-1 pl-sm-0">
+            <div class="p-3 border border-primary rounded">
+            {% block content %} {% endblock %}
+        </div></div>
+        <div class="col-sm-3 px-sm-0"><div class="p-3  border border-primary rounded">
+            {% block menu %} {% endblock %}
+        </div></div>
+      </div>
+      <div class="row border border-primary rounded shadow p-2">
+        <div class="col-sm-3">
+          Белов Максим Дмитриевич
+        </div>
+        <div class="col-sm-6">
+          Горизонтальная секция 2 подвала (шириной 4 sm колонки)
+        </div>
+        <div class="col-sm-3">
+          БГПУ им. М. Танка, 2020
+        </div>
+      </div>
+    </div>
+</body>
+</html>
