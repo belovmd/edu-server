@@ -22,12 +22,12 @@ def test(request):
                "    begin writeln('Hello, world');\n"
                "end.\n")
 
-    with open("/app/.apt/usr/bin/tmp.pas", 'w') as fh:
+    with open("/tmp/tmp.pas", 'w') as fh:
         fh.write(content)
 
     p = Popen(['/app/.apt/usr/bin/ifpc-3.0.4',
                '-Fu"/app/.apt/usr/lib/x86_64-linux-gnu/fpc/3.0.4/units/x86_64-linux/rtl"',
-               '/app/.apt/usr/bin/tmp.pas'],
+               '/tmp/tmp.pas'],
               stdout=PIPE,
               stdin=PIPE,
               stderr=STDOUT)
