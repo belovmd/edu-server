@@ -33,7 +33,7 @@ def test(request):
         '  writeln(i*i);'
         "writeln('Current Num');"
         'writeln(N);'
-        'end.)'
+        'end.'
     )
     with open("/tmp/tmp.pas", 'w') as fh:
         fh.write(content)
