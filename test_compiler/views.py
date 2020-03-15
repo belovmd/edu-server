@@ -1,9 +1,9 @@
+from subprocess import Popen, PIPE, STDOUT
+
+from django.http import JsonResponse
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
 # Create your views here.
 from django.views.decorators.csrf import ensure_csrf_cookie
-import json
-from subprocess import Popen, PIPE, STDOUT
 
 
 @ensure_csrf_cookie
