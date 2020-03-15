@@ -26,18 +26,6 @@ def test(request):
     """
     Функция отображения для домашней страницы сайта.
     """
-    # content = (
-    #     'program Hello;\n'
-    #     'var i, k, j, N: integer;\n'
-    #     'begin\n'
-    #     "write('enter num');\n"
-    #     'readln(N);\n'
-    #     'for i:=1 to 10 do\n'
-    #     '  writeln(i*i);\n'
-    #     "writeln('Current Num');\n"
-    #     'writeln(N);\n'
-    #     'end.\n'
-    # )
     if request.method == 'POST':
         r_json = request.POST
         with open("/tmp/tmp.pas", 'w') as fh:
