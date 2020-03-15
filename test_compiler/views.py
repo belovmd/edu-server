@@ -18,10 +18,23 @@ def test(request):
     """
     Функция отображения для домашней страницы сайта.
     """
-    content = ("program HelloWorld;\n"
-               "    begin writeln('Hello, world');\n"
-               "end.\n")
-
+    # content = ("program HelloWorld;\n"
+    #            "begin "
+    #            "    readln()"
+    #            "    writeln('Hello, world');\n"
+    #            "end.\n")
+    content = (
+        'program Hello;'
+        'var i, k, j, N: integer;'
+        'begin'
+        "write('Enter number of set elements: ');"
+        'readln(N);'
+        'for i:=1 to 10 do'
+        '  writeln(i*i);'
+        "writeln('Current Num');"
+        'writeln(N);'
+        'end.)'
+    )
     with open("/tmp/tmp.pas", 'w') as fh:
         fh.write(content)
     import os
@@ -37,6 +50,6 @@ def test(request):
               stdin=PIPE,
               stderr=STDOUT)
 
-    grep_stdout = p.communicate()
+    grep_stdout = p.communicate(input='10'.encode())
 
     return JsonResponse({"data": str(grep_stdout), "value": "bla"})
