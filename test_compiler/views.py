@@ -27,7 +27,7 @@ def test(request):
         'program Hello;\n'
         'var i, k, j, N: integer;\n'
         'begin\n'
-        "write('enter num')\n"
+        "write('enter num');\n"
         'readln(N);\n'
         'for i:=1 to 10 do\n'
         '  writeln(i*i);\n'
