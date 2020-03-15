@@ -34,4 +34,4 @@ def test(request):
               stderr=STDOUT)
     grep_stdout = p.communicate()
 
-    return JsonResponse({"data": grep_stdout, "value": "bla"})
+    return JsonResponse({"data": grep_stdout.decode(), "value": "bla"})
