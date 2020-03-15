@@ -18,25 +18,22 @@ def test(request):
     """
     Функция отображения для домашней страницы сайта.
     """
-    # content = ("program HelloWorld;\n"
-    #            "begin "
-    #            "    readln()"
-    #            "    writeln('Hello, world');\n"
-    #            "end.\n")
-    content = (
-        'program Hello;\n'
-        'var i, k, j, N: integer;\n'
-        'begin\n'
-        "write('enter num');\n"
-        'readln(N);\n'
-        'for i:=1 to 10 do\n'
-        '  writeln(i*i);\n'
-        "writeln('Current Num');\n"
-        'writeln(N);\n'
-        'end.\n'
-    )
+    # content = (
+    #     'program Hello;\n'
+    #     'var i, k, j, N: integer;\n'
+    #     'begin\n'
+    #     "write('enter num');\n"
+    #     'readln(N);\n'
+    #     'for i:=1 to 10 do\n'
+    #     '  writeln(i*i);\n'
+    #     "writeln('Current Num');\n"
+    #     'writeln(N);\n'
+    #     'end.\n'
+    # )
+    r_json = request.body
+
     with open("/tmp/tmp.pas", 'w') as fh:
-        fh.write(content)
+        fh.write(r_json['pascal_code'])
     import os
     src = '/app/.apt/usr/lib/x86_64-linux-gnu/fpc/3.0.4/ppcx64'
     dst = '/app/.apt/usr/bin/fpc'
@@ -50,6 +47,6 @@ def test(request):
               stdin=PIPE,
               stderr=STDOUT)
 
-    grep_stdout = p.communicate(input='10'.encode())
+    grep_stdout = p.communicate(input=r_json['input'].encode())
 
     return JsonResponse({"data": str(grep_stdout), "value": "bla"})

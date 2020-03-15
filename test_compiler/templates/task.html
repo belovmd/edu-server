@@ -85,7 +85,7 @@ end.
         function myFunction() {
             const data = {
                 pascal_code: document.getElementById("code").value,
-                input: document.getElementById("code").value,
+                input: document.getElementById("inp").value,
             };
             $.post('{% url 'codetest' %}', data, function (data, status) {
                 outp.setValue(data.data);
