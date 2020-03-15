@@ -25,13 +25,13 @@ def test(request):
     with open("/app/.apt/usr/bin/tmp.pas", 'w') as fh:
         fh.write(content)
     import os
-    os.remove("/app/.apt/usr/bin/tmp.pas")
     p = Popen(['/app/.apt/usr/bin/ifpc-3.0.4',
                '-Fu"/app/.apt/usr/lib/x86_64-linux-gnu/fpc/3.0.4/units/x86_64-linux/rtl"',
-               ],
+               "/app/.apt/usr/bin/tmp.pas"],
               stdout=PIPE,
               stdin=PIPE,
               stderr=STDOUT)
+    os.remove("/app/.apt/usr/bin/tmp.pas")
     grep_stdout = p.communicate()
 
     return JsonResponse({"data": str(grep_stdout), "value": "bla"})
