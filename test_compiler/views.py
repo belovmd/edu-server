@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 # Create your views here.
 from django.views.decorators.csrf import ensure_csrf_cookie
-
+import json
 from subprocess import Popen, PIPE, STDOUT
 
 
@@ -30,23 +30,23 @@ def test(request):
     #     'writeln(N);\n'
     #     'end.\n'
     # )
-    r_json = request.body
+    if request.method == 'POST':
+        r_json = request.POST
+        with open("/tmp/tmp.pas", 'w') as fh:
+            fh.write(r_json['pascal_code'])
+        import os
+        src = '/app/.apt/usr/lib/x86_64-linux-gnu/fpc/3.0.4/ppcx64'
+        dst = '/app/.apt/usr/bin/fpc'
+        try:
+            os.symlink(src, dst)
+        except Exception:
+            pass
+        p = Popen(['/app/.apt/usr/bin/ifpc-3.0.4',
+                   '/tmp/tmp.pas'],
+                  stdout=PIPE,
+                  stdin=PIPE,
+                  stderr=STDOUT)
 
-    with open("/tmp/tmp.pas", 'w') as fh:
-        fh.write(r_json['pascal_code'])
-    import os
-    src = '/app/.apt/usr/lib/x86_64-linux-gnu/fpc/3.0.4/ppcx64'
-    dst = '/app/.apt/usr/bin/fpc'
-    try:
-        os.symlink(src, dst)
-    except Exception:
-        pass
-    p = Popen(['/app/.apt/usr/bin/ifpc-3.0.4',
-               '/tmp/tmp.pas'],
-              stdout=PIPE,
-              stdin=PIPE,
-              stderr=STDOUT)
-
-    grep_stdout = p.communicate(input=r_json['input'].encode())
+        grep_stdout = p.communicate(input=r_json['input'].encode())
 
     return JsonResponse({"data": str(grep_stdout), "value": "bla"})
