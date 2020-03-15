@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %} My title {% endblock %}
 
 {% block content %}
-    {% load static %}
+
     <script src="{% static "mirror_lib/codemirror.js" %}"></script>
     <link rel="stylesheet" href="{% static "mirror_lib/codemirror.css" %}">
     <script src="{% static "mode/pascal/pascal.js" %}"></script>
@@ -10,24 +11,14 @@
         <div class="row mb-1">
             <div class="col-sm-12">
                 <div class="d-flex align-items-left flex-column border mb-1">
-                    <div class="px-2 py-0"><b>Task Description</b></div>
-                    <div class="px-2 py-0">This is task descriptionThis is task descriptionThis is task description
-                        This is task descriptionThis is task descriptionThis is task descriptionThis is task description
-                        This is task descriptionThis is task descriptionThis is task descriptionThis is task description
-                        This is task descriptionThis is task descriptionThis is task descriptionThis is task description
-                    </div>
+                    <div class="px-2 py-0"><b>{{ task.task_number }} {{task.task_title}}</b></div>
+                    <div class="px-2 py-0">{{ task.task_description }}</div>
                 </div>
-
-                <div class="border" style="margin-bottom: 5pt"><textarea id="code" name="code">
-program HelloWorld;
-    begin writeln('Hello, world');
-end.
-</textarea>
-
+                <div class="border" style="margin-bottom: 5pt"><textarea id="code" name="code">{{ task.task_snippet }}</textarea>
                 </div>
                 <div>
                     <button type="button" id="run" class="btn btn-primary" onclick="myFunction()">Запуск</button>
-                    <button type="button" class="btn btn-secondary" >Сбросить</button>
+                    <button type="button" class="btn btn-secondary">Сбросить</button>
                     <button type="button" class="btn btn-success">Отправить на поверку</button>
                 </div>
             </div>
@@ -93,4 +84,19 @@ end.
             });
         }
     </script>
+{% endblock %}
+
+{% block menu %}
+    <h6>Задачи темы</h6>
+    {% for cur_task in tasks %}
+        {% if cur_task == task %}
+            <a class="nav-link disabled" href="{{ cur_task.get_absolute_url }}">
+                {{ cur_task.task_number }} {{ cur_task.task_title }}
+            </a>
+        {% else %}
+            <a class="nav-link active" href="{{ cur_task.get_absolute_url }}">
+                {{ cur_task.task_number }} {{ cur_task.task_title }}
+            </a>
+        {% endif %}
+    {% endfor %}
 {% endblock %}

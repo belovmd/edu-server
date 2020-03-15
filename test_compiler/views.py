@@ -1,7 +1,7 @@
 from subprocess import Popen, PIPE, STDOUT
-
+from . import models
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 # Create your views here.
 from django.views.decorators.csrf import ensure_csrf_cookie
 
@@ -11,7 +11,15 @@ def index(request):
     """
     Функция отображения для домашней страницы сайта.
     """
-    return render(request, 'task.html')
+    tasks = models.Task.objects.all()
+    return render(request, 'menu.html', {'tasks': tasks})
+
+
+@ensure_csrf_cookie
+def task_view(request, slug):
+    task = get_object_or_404(models.Task, slug=slug)
+    tasks = models.Task.objects.all()
+    return render(request, 'task.html', {'tasks': tasks, 'task': task})
 
 
 def test(request):
