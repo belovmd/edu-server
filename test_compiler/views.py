@@ -24,16 +24,15 @@ def test(request):
     #            "    writeln('Hello, world');\n"
     #            "end.\n")
     content = (
-        'program Hello;'
-        'var i, k, j, N: integer;'
-        'begin'
-        "write('Enter number of set elements: ');"
-        'readln(N);'
-        'for i:=1 to 10 do'
-        '  writeln(i*i);'
-        "writeln('Current Num');"
-        'writeln(N);'
-        'end.'
+        'program Hello;\n'
+        'var i, k, j, N: integer;\n'
+        'begin\n'
+        'readln(N);\n'
+        'for i:=1 to 10 do\n'
+        '  writeln(i*i);\n'
+        "writeln('Current Num');\n"
+        'writeln(N);\n'
+        'end.\n'
     )
     with open("/tmp/tmp.pas", 'w') as fh:
         fh.write(content)
