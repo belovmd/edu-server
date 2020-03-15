@@ -3,59 +3,93 @@
 
 {% block content %}
     {% load static %}
-<script src="{% static "mirror_lib/codemirror.js" %}"></script>
-<link rel="stylesheet" href="{% static "mirror_lib/codemirror.css" %}">
-<script src="{% static "mode/pascal/pascal.js" %}"></script>
+    <script src="{% static "mirror_lib/codemirror.js" %}"></script>
+    <link rel="stylesheet" href="{% static "mirror_lib/codemirror.css" %}">
+    <script src="{% static "mode/pascal/pascal.js" %}"></script>
+    <div class="container-flex m-4 mt-sm-1">
+        <div class="row mb-1">
+            <div class="col-sm-12">
+                <div class="d-flex align-items-left flex-column border mb-1">
+                    <div class="px-2 py-0"><b>Task Description</b></div>
+                    <div class="px-2 py-0">This is task descriptionThis is task descriptionThis is task description
+                        This is task descriptionThis is task descriptionThis is task descriptionThis is task description
+                        This is task descriptionThis is task descriptionThis is task descriptionThis is task description
+                        This is task descriptionThis is task descriptionThis is task descriptionThis is task description
+                    </div>
+                </div>
 
-{#    <article>#}
-<h2>Pascal mode</h2>
-
-
-<div class = "border" style="margin-bottom: 5pt"><textarea id="code" name="code">
+                <div class="border" style="margin-bottom: 5pt"><textarea id="code" name="code">
 program HelloWorld;
     begin writeln('Hello, world');
 end.
 </textarea>
 
-</div>
-    <div>
-        <button type="button" id="run" class="btn btn-primary" onclick="myFunction()">Главный</button>
-        <button type="button" class="btn btn-secondary" style="background: black">Вторичный</button>
-        <button type="button" class="btn btn-success">Успех</button></div>
+                </div>
+                <div>
+                    <button type="button" id="run" class="btn btn-primary" onclick="myFunction()">Запуск</button>
+                    <button type="button" class="btn btn-secondary" >Сбросить</button>
+                    <button type="button" class="btn btn-success">Отправить на поверку</button>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-sm-6">
+                <h5>Input:</h5>
+                <div class="border" style="margin-bottom: 5pt">
+                    <textarea id="inp" name="inp"></textarea>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <h5>Output:</h5>
+                <div class="border" style="margin-bottom: 5pt">
+                    <textarea id="outp" name="outp"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script>
-
-      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-          lineNumbers: true,
-          mode: "text/x-pascal"
-      });
+        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+            lineNumbers: true,
+            mode: "text/x-pascal"
+        });
+        var inp = CodeMirror.fromTextArea(document.getElementById("inp"), {
+            lineNumbers: true,
+        });
+        var outp = CodeMirror.fromTextArea(document.getElementById("outp"), {
+            lineNumbers: true,
+            readOnly: true,
+        });
+        inp.setSize(null, 150);
+        outp.setSize(null, 150);
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <script>
-    var csrftoken = Cookies.get('csrftoken');
-    function csrfSafeMethod(method) {
-      // these HTTP methods do not require CSRF protection
-      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-    }
-    $.ajaxSetup({
-      beforeSend: function(xhr, settings) {
-        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-          xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        var csrftoken = Cookies.get('csrftoken');
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
         }
-      }
-    });
-    function myFunction() {
-        const data={
-            pascal_code: document.getElementById("code").value,
-        };
-        $.post('{% url 'codetest' %}', data, function(data, status){
-            editor.setValue(data.data);
+
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
         });
-    }
+
+        function myFunction() {
+            const data = {
+                pascal_code: document.getElementById("code").value,
+                input: document.getElementById("code").value,
+            };
+            $.post('{% url 'codetest' %}', data, function (data, status) {
+                outp.setValue(data.data);
+            });
+        }
     </script>
-{#    <p><strong>MIME types defined:</strong> <code>text/x-pascal</code>.</p>#}
-{#  </article>#}
-
-
 {% endblock %}
