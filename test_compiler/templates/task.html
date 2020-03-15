@@ -83,9 +83,10 @@ end.
         });
 
         function myFunction() {
-            var data = {
-                pascal_code: document.getElementById("code").value,
-                input: document.getElementById("inp").value,
+
+            const data = {
+                pascal_code: editor.getValue(),
+                input: inp.getValue(),
             };
             $.post('{% url 'codetest' %}', data, function (data, status) {
                 outp.setValue(data.data);
