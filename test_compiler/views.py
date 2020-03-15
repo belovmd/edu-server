@@ -49,4 +49,5 @@ def test(request):
 
         grep_stdout, _ = p.communicate(input=r_json['input'].encode())
 
-    return JsonResponse({"data": str(grep_stdout), "value": "bla"})
+        return JsonResponse({"data": grep_stdout.decode(), "value": "bla"})
+
