@@ -1,9 +1,10 @@
 from subprocess import Popen, PIPE, STDOUT
-from . import models
+
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
-# Create your views here.
 from django.views.decorators.csrf import ensure_csrf_cookie
+
+from . import models
 
 
 @ensure_csrf_cookie
@@ -46,4 +47,3 @@ def test(request):
         grep_stdout, _ = p.communicate(input=r_json['input'].encode())
 
         return JsonResponse({"data": grep_stdout.decode(), "value": "bla"})
-
