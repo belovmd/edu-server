@@ -11,7 +11,7 @@
         <div class="row mb-1">
             <div class="col-sm-12">
                 <div class="d-flex align-items-left flex-column border mb-1">
-                    <div class="px-2 py-0"><b>{{ task.task_number }}</b> {% if cur_task.task_title is not None %} {{ cur_task.task_title }} {% endif %}</div>
+                    <div class="px-2 py-0"><b>{{ task.task_number }}</b> {% if task.task_title is not None %} {{ task.task_title }} {% endif %}</div>
                     <div class="px-2 py-0">{{ task.task_description }}</div>
                 </div>
                 <div class="border" style="margin-bottom: 5pt"><textarea id="code" name="code">{{ task.task_snippet }}</textarea>
