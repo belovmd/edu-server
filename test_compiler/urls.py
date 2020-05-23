@@ -1,5 +1,5 @@
 from django.urls import path
-
+import admin
 from . import views
 
 admin.site.site_header = "UMSRA Admin"
