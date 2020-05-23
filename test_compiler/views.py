@@ -75,7 +75,8 @@ def all_tasks(request, class_id, paragraph_id):
 
 
 def all_paragraphs(request, class_id):
-    classes = models.Paragraph.objects.distinct('class_id').all()
+    classes = [par.class_id for par in models.Paragraph.objects.distinct('class_id').all()]
+
     paragraphs = models.Paragraph.objects.filter(class_id=class_id).all()
     return render(request, 'all_paragraphs.html', {'class_': class_id,
                                                    'paragraphs': paragraphs,
