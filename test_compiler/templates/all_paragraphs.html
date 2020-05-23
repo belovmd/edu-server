@@ -7,7 +7,7 @@
     <hr>
     <ul>
         {% for paragraph in paragraphs %}
-           <li><a class="nav-link" href="{% url "all_tasks" class_id paragraph.paragraph_id %}">
+           <li><a class="nav-link" href="{% url "all_tasks" class_ paragraph.paragraph_id %}">
                 §{{ paragraph.paragraph_id }}. {{ paragraph.title }}
            </a></li>
         {% endfor %}
