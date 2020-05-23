@@ -3,11 +3,10 @@
 {% block title %}Log-in{% endblock %}
 
 {% block content %}
-  <h1>Log-in</h1>
+  <h1>Вход</h1>
   {% if form.errors %}
     <p>
-      Your username and password didn't match.
-      Please try again.
+      Пароль или имя не совпадают. попробуйте еще раз.
     </p>
   {% else %}
     <p>Пожалуйста, заполните данную форму для входа. Если у Вас нет аккаунта,  <a href="{% url "register" %}">зарегистрируйтесь.</a></p>

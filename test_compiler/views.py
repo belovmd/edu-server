@@ -3,11 +3,12 @@ from subprocess import Popen, PIPE, STDOUT
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import ensure_csrf_cookie
-
+from django.contrib.auth.decorators import login_required
 from . import models
 
 
 @ensure_csrf_cookie
+@login_required
 def index(request):
     """
     Функция отображения для домашней страницы сайта.
@@ -17,6 +18,7 @@ def index(request):
 
 
 @ensure_csrf_cookie
+@login_required
 def task_view(request, slug):
     task = get_object_or_404(models.Task, slug=slug)
     tasks = models.Task.objects.filter(class_id=task.class_id,
@@ -30,6 +32,7 @@ def task_view(request, slug):
                                          'task': task})
 
 
+@login_required
 def test(request):
     """
     Функция отображения для домашней страницы сайта.
@@ -59,6 +62,7 @@ def test(request):
         return JsonResponse({"data": grep_stdout.decode('cp1251'), "value": "bla"})
 
 
+@login_required
 def all_tasks(request, class_id, paragraph_id):
     paragraph = get_object_or_404(models.Paragraph, class_id=class_id,
                                   paragraph_id=paragraph_id)
@@ -74,6 +78,7 @@ def all_tasks(request, class_id, paragraph_id):
                                               'paragraphs': paragraphs})
 
 
+@login_required
 def all_paragraphs(request, class_id):
     classes = [par.class_id for par in models.Paragraph.objects.distinct('class_id').all()]
 
