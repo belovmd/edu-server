@@ -3,7 +3,7 @@
 
 {% block content %}
     <h4>Все задачи:</h4>
-  {% for task in tasks %}
+    {% for task in tasks %}
         <a class="nav-link active" href="{{ task.get_absolute_url }}">
             {{ task.task_number }} {{ task.task_title }}
         </a>

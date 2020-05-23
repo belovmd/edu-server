@@ -57,3 +57,20 @@ def test(request):
         grep_stdout, _ = p.communicate(input=r_json['input'].encode('cp1251'))
 
         return JsonResponse({"data": grep_stdout.decode('cp1251'), "value": "bla"})
+
+
+def all_tasks(request, paragraph_id):
+    paragraph = get_object_or_404(models.Paragraph, paragraph_id=paragraph_id)
+    paragraphs = models.Paragraph.objects.filter(class_id=paragraph.class_id)
+    tasks = models.Task.objects.filter(paragraph=paragraph_id)
+
+    lesson_tasks = tasks.filter(class_homework='lesson').order_by('task_number').all()
+    hw_tasks = tasks.filter(class_homework='homework').order_by('task_number').all()
+
+    return render(request, 'all_tasks.html', {'lesson_tasks': lesson_tasks,
+                                              'hw_tasks': hw_tasks,
+                                              'paragraph': paragraph,
+                                              'paragraphs': paragraphs})
+
+def all_paragraphs(request, clas):
+    pass

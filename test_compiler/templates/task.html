@@ -88,7 +88,7 @@
 
 {% block menu %}
     <H5>{{ task.class_id }} класс.</H5>
-    <H6>Параграф {{ task.paragraph }}</H6>
+    <H6> <a href="{% url "all_tasks" task.paragraph_id %}">Параграф {{ task.paragraph }}</a></H6>
 <div id="accordion" style="padding-left: 15px">
   <div class="card">
     <div class="card-header" id="headingOne">

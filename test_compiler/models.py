@@ -58,3 +58,9 @@ class School(models.Model):
 
     def get_absolute_url(self):
         return reverse('task_view', args=[self.slug])
+
+
+class Paragraph(models.Model):
+    title = models.CharField(verbose_name='название главы', max_length=255)
+    paragraph_id = models.IntegerField(verbose_name='название главы')
+    class_id = models.IntegerField(verbose_name='класс')
