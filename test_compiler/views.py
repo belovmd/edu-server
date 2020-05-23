@@ -38,6 +38,8 @@ def test(request):
         r_json = request.POST
         with open("/tmp/tmp.pas", 'w', encoding='utf-8') as fh:
             fh.write('{$codepage UTF8}\n')
+            fh.write('uses cwstring\n')
+            r_json['pascal_code'].replace('string;', 'UnicodeString;')
             fh.write(r_json['pascal_code'])
         import os
         src = '/app/.apt/usr/lib/x86_64-linux-gnu/fpc/3.0.4/ppcx64'
