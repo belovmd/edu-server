@@ -6,7 +6,7 @@ from django.urls import reverse
 class Task(models.Model):
     task_number = models.CharField(max_length=30)
     slug = models.SlugField(unique=True)
-    task_title = models.CharField(max_length=30, blank=True, null=True)
+    task_title = models.CharField(max_length=255, blank=True, null=True)
     task_description = models.TextField(blank=True, null=True)
     task_snippet = models.TextField(blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
