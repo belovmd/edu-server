@@ -93,7 +93,7 @@
             <a class="nav-link disabled" href="{{ cur_task.get_absolute_url }}">
                 {{ cur_task.task_number }} {{ cur_task.task_title }}
             </a>
-        {% else %}
+        {% elif cur_task.class_id == task.class_id and cur_task.paragraph == task.paragraph %}
             <a class="nav-link active" href="{{ cur_task.get_absolute_url }}">
                 {{ cur_task.task_number }} {{ cur_task.task_title }}
             </a>

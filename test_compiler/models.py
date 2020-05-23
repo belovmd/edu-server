@@ -29,6 +29,11 @@ class Task(models.Model):
     def get_absolute_url(self):
         return reverse('task_view', args=[self.slug])
 
+    def __str__(self):
+        return "Задача {}, параграф {}, класс {}".format(self.task_number,
+                                                         self.paragraph,
+                                                         self.class_id)
+
 
 class School(models.Model):
 
