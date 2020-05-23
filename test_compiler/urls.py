@@ -2,9 +2,9 @@ from django.urls import path
 from django.contrib import admin
 from . import views
 
-admin.site.site_header = "UMSRA Admin"
-admin.site.site_title = "UMSRA Admin Portal"
-admin.site.index_title = "Welcome to UMSRA Researcher Portal"
+admin.site.site_header = "Онлайн обучение Паскаль."
+admin.site.site_title = "Панель администрирования"
+admin.site.index_title = "Добро пожаловать в панель управления"
 
 urlpatterns = [
     # path('', views.index, name='index'),
