@@ -11,7 +11,7 @@
         <div class="row mb-1">
             <div class="col-sm-12">
                 <div class="d-flex align-items-left flex-column border mb-1">
-                    <div class="px-2 py-0"><b>{{ task.task_number }} {{task.task_title}}</b></div>
+                    <div class="px-2 py-0"><b>{{ task.task_number }} {% if cur_task.task_title is not None %} {{ cur_task.task_title }} {% endif %}</b></div>
                     <div class="px-2 py-0">{{ task.task_description }}</div>
                 </div>
                 <div class="border" style="margin-bottom: 5pt"><textarea id="code" name="code">{{ task.task_snippet }}</textarea>
@@ -116,7 +116,7 @@
                 </a>
             {% else %}
                 <a class="nav-link active" href="{{ cur_task.get_absolute_url }}">
-                    {{ cur_task.task_number }} {{ cur_task.task_title }}
+                    {{ cur_task.task_number }} {% if cur_task.task_title is not None %} {{ cur_task.task_title }} {% endif %}
                 </a>
             {% endif %}
           {% endfor %}
@@ -150,7 +150,7 @@
                 </a>
             {% else %}
                 <a class="nav-link active" href="{{ cur_task.get_absolute_url }}">
-                    {{ cur_task.task_number }} {{ cur_task.task_title }}
+                    {{ cur_task.task_number }} {% if cur_task.task_title is not None %} {{ cur_task.task_title }} {% endif %}
                 </a>
             {% endif %}
         {% endfor %}
