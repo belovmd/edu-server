@@ -51,6 +51,6 @@ def test(request):
                   stdin=PIPE,
                   stderr=STDOUT)
 
-        grep_stdout, _ = p.communicate(input=r_json['input'].encode())
+        grep_stdout, _ = p.communicate(input=r_json['input'].encode('utf-8'))
 
         return JsonResponse({"data": grep_stdout.decode(), "value": "bla"})
