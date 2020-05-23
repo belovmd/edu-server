@@ -37,6 +37,7 @@ def test(request):
     if request.method == 'POST':
         r_json = request.POST
         with open("/tmp/tmp.pas", 'w') as fh:
+            fh.write('{$codepage UTF8}\n')
             fh.write(r_json['pascal_code'])
         import os
         src = '/app/.apt/usr/lib/x86_64-linux-gnu/fpc/3.0.4/ppcx64'
@@ -53,4 +54,4 @@ def test(request):
 
         grep_stdout, _ = p.communicate(input=r_json['input'].encode('utf-8'))
 
-        return JsonResponse({"data": grep_stdout.decode(), "value": "bla"})
+        return JsonResponse({"data": grep_stdout.decode('utf-8'), "value": "bla"})
