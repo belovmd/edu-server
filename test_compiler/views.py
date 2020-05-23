@@ -59,8 +59,9 @@ def test(request):
         return JsonResponse({"data": grep_stdout.decode('cp1251'), "value": "bla"})
 
 
-def all_tasks(request, paragraph_id):
-    paragraph = get_object_or_404(models.Paragraph, paragraph_id=paragraph_id)
+def all_tasks(request, class_id, paragraph_id):
+    paragraph = get_object_or_404(models.Paragraph, class_id=class_id,
+                                  paragraph_id=int(paragraph_id))
     paragraphs = models.Paragraph.objects.filter(class_id=paragraph.class_id)
     tasks = models.Task.objects.filter(paragraph=paragraph_id)
 
