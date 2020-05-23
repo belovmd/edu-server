@@ -87,9 +87,9 @@
 {% endblock %}
 
 {% block menu %}
-    <H5>{{ task.class_id }}</H5>
-    <H6>{{ task.paragraph }}</H6>
-<div id="accordion" style="padding-left: 30px">
+    <H5>{{ task.class_id }} класс.</H5>
+    <H6>Параграф {{ task.paragraph }}</H6>
+<div id="accordion" style="padding-left: 15px">
   <div class="card">
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
@@ -112,7 +112,7 @@
           {% for cur_task in lesson_tasks %}
             {% if cur_task == task %}
                 <a class="nav-link disabled" href="{{ cur_task.get_absolute_url }}">
-                    {{ cur_task.task_number }} {% if cur_task.task_title %} {{ cur_task.task_title }} {% endif %}
+                    {{ cur_task.task_number }} {% if cur_task.task_title != 'None' %} {{ cur_task.task_title }} {% endif %}
                 </a>
             {% else %}
                 <a class="nav-link active" href="{{ cur_task.get_absolute_url }}">
@@ -146,7 +146,7 @@
         {% for cur_task in hw_tasks %}
             {% if cur_task == task %}
                 <a class="nav-link disabled" href="{{ cur_task.get_absolute_url }}">
-                    {{ cur_task.task_number }} {% if cur_task.task_title %}{{ cur_task.task_title }} {% endif %}
+                    {{ cur_task.task_number }} {% if cur_task.task_title != 'None' %}{{ cur_task.task_title }} {% endif %}
                 </a>
             {% else %}
                 <a class="nav-link active" href="{{ cur_task.get_absolute_url }}">
@@ -160,41 +160,4 @@
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{##}
-{##}
-{#    <p>{{ task.class_id }}</p>#}
-{#    <p>{{ task.paragraph }}</p>#}
-{#    <h6>Задачи с уроков</h6>#}
-{#    <h6>Упражнения</h6>#}
-{#    <p>#}
-{#    {% for cur_task in tasks %}#}
-{#        {% if cur_task == task %}#}
-{#            <a class="nav-link disabled" href="{{ cur_task.get_absolute_url }}">#}
-{#                {{ cur_task.task_number }} {{ cur_task.task_title }}#}
-{#            </a>#}
-{#        {% elif cur_task.class_id == task.class_id and cur_task.paragraph == task.paragraph %}#}
-{#            <a class="nav-link active" href="{{ cur_task.get_absolute_url }}">#}
-{#                {{ cur_task.task_number }} {{ cur_task.task_title }}#}
-{#            </a>#}
-{#        {% endif %}#}
-{#    {% endfor %}#}
-{#    </p>#}
 {% endblock %}
