@@ -4,6 +4,7 @@
 
 {% block content %}
     <H1>{{ paragraph.class_id }} класс. §{{ paragraph.paragraph_id }}. {{ paragraph.title }} </H1>
+    <hr>
     <h2>Задания с уроков:</h2>
         <ul>
             {% for cur_task in lesson_tasks %}
@@ -23,10 +24,10 @@
 {% endblock %}
 
 {% block menu %}
-    <H5>{{ task.class_id }} класс.</H5>
-    <H6>Параграф {{ task.paragraph }}</H6>
+    <H5>{{ paragraph.class_id }} класс.</H5>
+    <H6>Параграф {{ paragraph.paragraph_id }}</H6>
     {% for cur_paragraph in paragraphs %}
-        {% if cur_task == task %}
+        {% if cur_paragraph == paragraph %}
             <a class="nav-link disabled" href="{% url "all_tasks" cur_paragraph.class_id cur_paragraph.paragraph_id %}">
                 <H6>Параграф {{ cur_paragraph.paragraph_id }}. {{ cur_paragraph.title }}</H6>
             </a>
