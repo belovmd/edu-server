@@ -61,6 +61,10 @@ class School(models.Model):
 
 
 class Paragraph(models.Model):
+    class Meta:
+        verbose_name = 'Параграф'
+        verbose_name_plural = 'Параграфы'
+
     title = models.CharField(verbose_name='Название параграфа', max_length=255)
     paragraph_id = models.IntegerField(verbose_name='Номер параграфа')
     class_id = models.IntegerField(verbose_name='Класс')
