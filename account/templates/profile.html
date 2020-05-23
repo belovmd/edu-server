@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Ваши данные:{% endblock %}
+
+{% block content %}
+    <p>Имя: {{ request.current_user.first_name }}</p>
+    <p>Фамилия: {{ request.current_user.last_name }}</p>
+    <p>Дата рождения: {{ request.current_user.profile.date_of_birth }}</p>
+{% endblock %}
