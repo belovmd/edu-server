@@ -87,7 +87,9 @@
 {% endblock %}
 
 {% block menu %}
-<div id="accordion">
+    <H5>{{ task.class_id }}</H5>
+    <H6>{{ task.paragraph }}</H6>
+<div id="accordion" style="padding-left: 30px">
   <div class="card">
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
@@ -110,7 +112,7 @@
           {% for cur_task in lesson_tasks %}
             {% if cur_task == task %}
                 <a class="nav-link disabled" href="{{ cur_task.get_absolute_url }}">
-                    {{ cur_task.task_number }} {{ cur_task.task_title }}
+                    {{ cur_task.task_number }} {% if cur_task.task_title %} {{ cur_task.task_title }} {% endif %}
                 </a>
             {% else %}
                 <a class="nav-link active" href="{{ cur_task.get_absolute_url }}">
@@ -144,7 +146,7 @@
         {% for cur_task in hw_tasks %}
             {% if cur_task == task %}
                 <a class="nav-link disabled" href="{{ cur_task.get_absolute_url }}">
-                    {{ cur_task.task_number }} {{ cur_task.task_title }}
+                    {{ cur_task.task_number }} {% if cur_task.task_title %}{{ cur_task.task_title }} {% endif %}
                 </a>
             {% else %}
                 <a class="nav-link active" href="{{ cur_task.get_absolute_url }}">
