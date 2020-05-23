@@ -36,7 +36,7 @@ def test(request):
     """
     if request.method == 'POST':
         r_json = request.POST
-        with open("/tmp/tmp.pas", 'w') as fh:
+        with open("/tmp/tmp.pas", 'w', encoding='utf-8') as fh:
             fh.write('{$codepage UTF8}\n')
             fh.write(r_json['pascal_code'])
         import os
