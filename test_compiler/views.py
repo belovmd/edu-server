@@ -81,3 +81,9 @@ def all_paragraphs(request, class_id):
     return render(request, 'all_paragraphs.html', {'class_': class_id,
                                                    'paragraphs': paragraphs,
                                                    'classes': classes})
+
+
+def program(request):
+    classes = [par.class_id for par in models.Paragraph.objects.distinct('class_id').all()]
+
+    return render(request, 'program.html', {'classes': classes})

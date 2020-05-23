@@ -87,6 +87,7 @@
 {% endblock %}
 
 {% block menu %}
+    <H4><a href="{% url "school_tasks" %}">Школьная программа</a></H4>
     <H5><a href="{% url "all_paragraphs" task.class_id %}">{{ task.class_id }} класс.</a></H5>
     <H6> <a href="{% url "all_tasks" task.class_id task.paragraph %}">Параграф {{ task.paragraph }}. </a></H6>
 <div id="accordion" style="padding-left: 15px">
