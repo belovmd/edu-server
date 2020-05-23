@@ -56,4 +56,4 @@ def test(request):
 
         grep_stdout, _ = p.communicate(input=r_json['input'].encode('cp1251'))
 
-        return JsonResponse({"data": grep_stdout.decode(), "value": "bla"})
+        return JsonResponse({"data": grep_stdout.decode('cp1251'), "value": "bla"})
