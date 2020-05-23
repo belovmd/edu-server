@@ -87,16 +87,112 @@
 {% endblock %}
 
 {% block menu %}
-    <h6>Задачи темы</h6>
-    {% for cur_task in tasks %}
-        {% if cur_task == task %}
-            <a class="nav-link disabled" href="{{ cur_task.get_absolute_url }}">
-                {{ cur_task.task_number }} {{ cur_task.task_title }}
-            </a>
-        {% elif cur_task.class_id == task.class_id and cur_task.paragraph == task.paragraph %}
-            <a class="nav-link active" href="{{ cur_task.get_absolute_url }}">
-                {{ cur_task.task_number }} {{ cur_task.task_title }}
-            </a>
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        {% if task.class_homework == 'lesson' %}
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        {% else %}
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
         {% endif %}
-    {% endfor %}
+          Задачи с уроков
+        </button>
+      </h5>
+    </div>
+
+    {% if task.class_homework == 'lesson' %}
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+    {% else %}
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+    {% endif %}
+      <div class="card-body">
+          {% for cur_task in lesson_tasks %}
+            {% if cur_task == task %}
+                <a class="nav-link disabled" href="{{ cur_task.get_absolute_url }}">
+                    {{ cur_task.task_number }} {{ cur_task.task_title }}
+                </a>
+            {% else %}
+                <a class="nav-link active" href="{{ cur_task.get_absolute_url }}">
+                    {{ cur_task.task_number }} {{ cur_task.task_title }}
+                </a>
+            {% endif %}
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        {% if task.class_homework == 'homework' %}
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        {% else %}
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        {% endif %}
+          Упражнения
+        </button>
+      </h5>
+    </div>
+
+    {% if task.class_homework == 'homework' %}
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+    {% else %}
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+    {% endif %}
+      <div class="card-body">
+        {% for cur_task in hw_tasks %}
+            {% if cur_task == task %}
+                <a class="nav-link disabled" href="{{ cur_task.get_absolute_url }}">
+                    {{ cur_task.task_number }} {{ cur_task.task_title }}
+                </a>
+            {% else %}
+                <a class="nav-link active" href="{{ cur_task.get_absolute_url }}">
+                    {{ cur_task.task_number }} {{ cur_task.task_title }}
+                </a>
+            {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{##}
+{##}
+{#    <p>{{ task.class_id }}</p>#}
+{#    <p>{{ task.paragraph }}</p>#}
+{#    <h6>Задачи с уроков</h6>#}
+{#    <h6>Упражнения</h6>#}
+{#    <p>#}
+{#    {% for cur_task in tasks %}#}
+{#        {% if cur_task == task %}#}
+{#            <a class="nav-link disabled" href="{{ cur_task.get_absolute_url }}">#}
+{#                {{ cur_task.task_number }} {{ cur_task.task_title }}#}
+{#            </a>#}
+{#        {% elif cur_task.class_id == task.class_id and cur_task.paragraph == task.paragraph %}#}
+{#            <a class="nav-link active" href="{{ cur_task.get_absolute_url }}">#}
+{#                {{ cur_task.task_number }} {{ cur_task.task_title }}#}
+{#            </a>#}
+{#        {% endif %}#}
+{#    {% endfor %}#}
+{#    </p>#}
 {% endblock %}

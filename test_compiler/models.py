@@ -8,6 +8,11 @@ class Task(models.Model):
         verbose_name = 'Задача'
         verbose_name_plural = 'Задачи'
 
+    TASK_TYPE = (
+        ('lesson', 'Задача с уроков'),
+        ('homework', 'Упражнение для самостоятельного решения')
+    )
+
     task_number = models.CharField(verbose_name='Номер задачи', max_length=30)
     slug = models.SlugField(verbose_name='Код (создается автоматически)',
                             unique=True)
@@ -25,6 +30,10 @@ class Task(models.Model):
                                    blank=True, null=True)
     paragraph = models.IntegerField(verbose_name='Номер параграфа',
                                     default=0)
+    class_homework = models.CharField(verbose_name="Тип задания",
+                                      max_length=255,
+                                      choices=TASK_TYPE,
+                                      default='lesson')
 
     def get_absolute_url(self):
         return reverse('task_view', args=[self.slug])
