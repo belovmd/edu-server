@@ -63,7 +63,7 @@ class School(models.Model):
 class Paragraph(models.Model):
     title = models.CharField(verbose_name='Название параграфа', max_length=255)
     paragraph_id = models.IntegerField(verbose_name='Номер параграфа')
-    class_id = models.IntegerField(verbose_name='класс')
+    class_id = models.IntegerField(verbose_name='Класс')
 
     def __str__(self):
         return "Класс {}, параграф {}, {}".format(self.class_id,
