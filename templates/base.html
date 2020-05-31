@@ -52,14 +52,15 @@
 </header>
 <div class="container-flex m-4 mt-sm-1">
     <div class="row mb-1">
-        <div class="col-sm-9 pr-sm-1 pl-sm-0">
+        <div class="col-sm-3 pr-sm-1 pl-sm-0">
             <div class="p-3 border border-primary rounded">
-                {% block content %} {% endblock %}
+                {% block menu %} {% endblock %}
             </div>
         </div>
-        <div class="col-sm-3 px-sm-0">
+        <div class="col-sm-9 px-sm-0">
             <div class="p-3  border border-primary rounded">
-                {% block menu %} {% endblock %}
+                {% block content %} {% endblock %}
+
             </div>
         </div>
     </div>
