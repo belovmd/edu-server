@@ -29,11 +29,11 @@
     {% for cur_paragraph in paragraphs %}
         {% if cur_paragraph == paragraph %}
             <a class="nav-link disabled" href="{% url "all_tasks" cur_paragraph.class_id cur_paragraph.paragraph_id %}">
-                <H6>Параграф {{ cur_paragraph.paragraph_id }}. {{ cur_paragraph.title }}</H6>
+                <H6>§{{ cur_paragraph.paragraph_id }}. {{ cur_paragraph.title }}</H6>
             </a>
         {% else %}
             <a class="nav-link active" href="{% url "all_tasks" cur_paragraph.class_id cur_paragraph.paragraph_id %}">
-                <H6>Параграф {{ cur_paragraph.paragraph_id }}. {{ cur_paragraph.title }}</H6>
+                <H6>§{{ cur_paragraph.paragraph_id }}. {{ cur_paragraph.title }}</H6>
             </a>
         {% endif %}
     {% endfor %}
