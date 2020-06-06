@@ -9,7 +9,7 @@
         <ul>
             {% for cur_task in lesson_tasks %}
                <li><a class="nav-link" href="{{ cur_task.task.get_absolute_url }}">
-                    {{ cur_task.task_number }} {% if cur_task.task_title is not None %} {{ cur_task.task_title }} {% endif %}
+                    Пример {{ cur_task.task_number }}{% if cur_task.task_title is not None %}. {{ cur_task.task_title }} {% endif %}
                </a></li>
             {% endfor %}
         </ul>
@@ -17,7 +17,7 @@
         <ul>
             {% for cur_task in hw_tasks %}
                <li><a class="nav-link" href="{{ cur_task.task.get_absolute_url }}">
-                    {{ cur_task.task_number }} {% if cur_task.task_title is not None %} {{ cur_task.task_title }} {% endif %}
+                    Упр.3 {{ cur_task.task_number }} {% if cur_task.task_title is not None %} {{ cur_task.task_title }} {% endif %}
                </a></li>
             {% endfor %}
         </ul>
