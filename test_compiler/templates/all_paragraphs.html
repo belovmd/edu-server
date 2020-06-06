@@ -32,7 +32,7 @@
         {% endif %}
     {% endfor %}
     {% for cur_paragraph in paragraphs %}
-        <a class="nav-link disabled" href="{% url "all_tasks" cur_paragraph.class_id cur_paragraph.paragraph_id %}">
+        <a class="nav-link active" href="{% url "all_tasks" cur_paragraph.class_id cur_paragraph.paragraph_id %}">
             <H6>§{{ cur_paragraph.paragraph_id }}. {{ cur_paragraph.title }}</H6>
         </a>
     {% endfor %}
