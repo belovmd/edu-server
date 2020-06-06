@@ -65,13 +65,14 @@ def test(request):
 
         return JsonResponse({"data": grep_stdout.decode('cp1251'), "value": "bla"})
 
+
 def _modify_lesson_tasks(lesson_tasks):
     result_tasks = []
     for task in lesson_tasks:
         populated_task = {'task_title': task.task_title}
-        if task[task.task_number.find('.')+1] == '0':
-            populated_task['task_number'] = (task[:task.task_number.find('.')+1]+
-                                             task[task.task_number.find('.')+2])
+        if task.task_number[task.task_number.find('.')+1] == '0':
+            populated_task['task_number'] = (task.task_number[:task.task_number.find('.')+1]+
+                                             task.task_number[task.task_number.find('.')+2])
         result_tasks.append(populated_task)
     return lesson_tasks
 
