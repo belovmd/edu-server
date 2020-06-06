@@ -16,7 +16,7 @@
     <h2>Упражнения:</h2>
         <ul>
             {% for cur_task in hw_tasks %}
-               <li><a class="nav-link" href="{{ cur_task.get_absolute_url }}">
+               <li><a class="nav-link" href="{{ cur_task.task.get_absolute_url }}">
                     {{ cur_task.task_number }} {% if cur_task.task_title is not None %} {{ cur_task.task_title }} {% endif %}
                </a></li>
             {% endfor %}

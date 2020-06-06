@@ -80,6 +80,19 @@ def _modify_lesson_tasks(lesson_tasks):
     return result_tasks
 
 
+def _modify_hw_tasks(hw_tasks):
+    result_tasks = []
+    for task in hw_tasks:
+        populated_task = {'task_title': task.task_title,
+                          'task': task}
+        if task.task_number[0] == '0':
+            populated_task['task_number'] = task.task_number[1:]
+        else:
+            populated_task['task_number'] = task.task_number
+        result_tasks.append(populated_task)
+    return result_tasks
+
+
 @login_required
 def all_tasks(request, class_id, paragraph_id):
     paragraph = get_object_or_404(models.Paragraph, class_id=class_id,
@@ -90,9 +103,9 @@ def all_tasks(request, class_id, paragraph_id):
     lesson_tasks = tasks.filter(class_homework='lesson').order_by('task_number').all()
     hw_tasks = tasks.filter(class_homework='homework').order_by('task_number').all()
     populated_lesson = _modify_lesson_tasks(lesson_tasks)
+    populated_hw = _modify_hw_tasks(hw_tasks)
     return render(request, 'all_tasks.html', {'lesson_tasks': populated_lesson,
-                                              # 'populated_lessons': populated_lesson,
-                                              'hw_tasks': hw_tasks,
+                                              'hw_tasks': populated_hw,
                                               'paragraph': paragraph,
                                               'paragraphs': paragraphs})
 
