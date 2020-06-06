@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block menu %}
-    <H4><a href="{% url "school_tasks" %}">Школьная программа</a></H4>
+    <H4><a href="{% url "school_tasks" %}">Изучаемые темы</a></H4>
     {% for cur_class in classes %}
         {% if cur_class == class_ %}
             <a class="nav-link disabled" href="{% url "all_paragraphs" cur_class %}">

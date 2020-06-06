@@ -24,7 +24,7 @@
 {% endblock %}
 
 {% block menu %}
-    <H4><a href="{% url "school_tasks" %}">Школьная программа</a></H4>
+    <H4><a href="{% url "school_tasks" %}">Изучаемые темы</a></H4>
     <H5><a href="{% url "all_paragraphs" paragraph.class_id %}">{{ paragraph.class_id }} класс.</a></H5>
     {% for cur_paragraph in paragraphs %}
         {% if cur_paragraph == paragraph %}
