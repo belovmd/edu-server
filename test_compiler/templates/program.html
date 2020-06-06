@@ -15,8 +15,9 @@
 {% endblock %}
 
 {% block menu %}
-
+    <H4><a href="{% url "school_tasks" %}">Изучаемые темы</a></H4>
    {% for class_ in classes %}
+
    <a class="nav-link" href="{% url "all_paragraphs" class_ %}">
         {{ class_ }} класс
    </a>
