@@ -112,12 +112,12 @@
       <div class="card-body">
           {% for cur_task in lesson_tasks %}
             {% if cur_task == task %}
-                <a class="nav-link disabled" href="{{ cur_task.get_absolute_url }}">
-                    {{ cur_task.task_number }} {% if cur_task.task_title is not None %} {{ cur_task.task_title }} {% endif %}
+                <a class="nav-link disabled" href="{{ cur_task.task.get_absolute_url }}">
+                    Пример {{ cur_task.task_number }}{% if cur_task.task_title is not None %}. {{ cur_task.task_title }} {% endif %}
                 </a>
             {% else %}
-                <a class="nav-link active" href="{{ cur_task.get_absolute_url }}">
-                    {{ cur_task.task_number }} {% if cur_task.task_title is not None %} {{ cur_task.task_title }} {% endif %}
+                <a class="nav-link active" href="{{ cur_task.task.get_absolute_url }}">
+                    Пример {{ cur_task.task_number }}{% if cur_task.task_title is not None %}. {{ cur_task.task_title }} {% endif %}
                 </a>
             {% endif %}
           {% endfor %}
@@ -146,12 +146,12 @@
       <div class="card-body">
         {% for cur_task in hw_tasks %}
             {% if cur_task == task %}
-                <a class="nav-link disabled" href="{{ cur_task.get_absolute_url }}">
-                    {{ cur_task.task_number }} {% if cur_task.task_title is not None %}{{ cur_task.task_title }} {% endif %}
+                <a class="nav-link disabled" href="{{ cur_task.task.get_absolute_url }}">
+                     Упр. {{ cur_task.task_number }} {% if cur_task.task_title is not None %}{{ cur_task.task_title }} {% endif %}
                 </a>
             {% else %}
-                <a class="nav-link active" href="{{ cur_task.get_absolute_url }}">
-                    {{ cur_task.task_number }} {% if cur_task.task_title is not None %} {{ cur_task.task_title }} {% endif %}
+                <a class="nav-link active" href="{{ cur_task.task.get_absolute_url }}">
+                     Упр. {{ cur_task.task_number }} {% if cur_task.task_title is not None %} {{ cur_task.task_title }} {% endif %}
                 </a>
             {% endif %}
         {% endfor %}

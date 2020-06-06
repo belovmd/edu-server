@@ -7,6 +7,33 @@ from django.contrib.auth.decorators import login_required
 from . import models
 
 
+def _modify_lesson_tasks(lesson_tasks):
+    result_tasks = []
+    for task in lesson_tasks:
+        populated_task = {'task_title': task.task_title,
+                          'task': task}
+        if task.task_number[task.task_number.find('.')+1] == '0':
+            populated_task['task_number'] = (task.task_number[:task.task_number.find('.')+1]+
+                                             task.task_number[task.task_number.find('.')+2])
+        else:
+            populated_task['task_number'] = task.task_number
+        result_tasks.append(populated_task)
+    return result_tasks
+
+
+def _modify_hw_tasks(hw_tasks):
+    result_tasks = []
+    for task in hw_tasks:
+        populated_task = {'task_title': task.task_title,
+                          'task': task}
+        if task.task_number[0] == '0':
+            populated_task['task_number'] = task.task_number[1:]
+        else:
+            populated_task['task_number'] = task.task_number
+        result_tasks.append(populated_task)
+    return result_tasks
+
+
 @ensure_csrf_cookie
 @login_required
 def index(request):
@@ -29,9 +56,10 @@ def task_view(request, slug):
     paragraph = get_object_or_404(models.Paragraph,
                                   paragraph_id=task.paragraph,
                                   class_id=task.class_id)
-
-    return render(request, 'task.html', {'lesson_tasks': lesson_tasks,
-                                         'hw_tasks': hw_tasks,
+    populated_lesson = _modify_lesson_tasks(lesson_tasks)
+    populated_hw = _modify_hw_tasks(hw_tasks)
+    return render(request, 'task.html', {'lesson_tasks': populated_lesson,
+                                         'hw_tasks': populated_hw,
                                          'task': task,
                                          'paragraph': paragraph})
 
@@ -64,33 +92,6 @@ def test(request):
         grep_stdout, _ = p.communicate(input=r_json['input'].encode('cp1251'))
 
         return JsonResponse({"data": grep_stdout.decode('cp1251'), "value": "bla"})
-
-
-def _modify_lesson_tasks(lesson_tasks):
-    result_tasks = []
-    for task in lesson_tasks:
-        populated_task = {'task_title': task.task_title,
-                          'task': task}
-        if task.task_number[task.task_number.find('.')+1] == '0':
-            populated_task['task_number'] = (task.task_number[:task.task_number.find('.')+1]+
-                                             task.task_number[task.task_number.find('.')+2])
-        else:
-            populated_task['task_number'] = task.task_number
-        result_tasks.append(populated_task)
-    return result_tasks
-
-
-def _modify_hw_tasks(hw_tasks):
-    result_tasks = []
-    for task in hw_tasks:
-        populated_task = {'task_title': task.task_title,
-                          'task': task}
-        if task.task_number[0] == '0':
-            populated_task['task_number'] = task.task_number[1:]
-        else:
-            populated_task['task_number'] = task.task_number
-        result_tasks.append(populated_task)
-    return result_tasks
 
 
 @login_required
