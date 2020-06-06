@@ -73,6 +73,8 @@ def _modify_lesson_tasks(lesson_tasks):
         if task.task_number[task.task_number.find('.')+1] == '0':
             populated_task['task_number'] = (task.task_number[:task.task_number.find('.')+1]+
                                              task.task_number[task.task_number.find('.')+2])
+        else:
+            populated_task['task_number'] = task.task_number
         result_tasks.append(populated_task)
     return result_tasks
 
