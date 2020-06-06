@@ -74,7 +74,7 @@ def _modify_lesson_tasks(lesson_tasks):
             populated_task['task_number'] = (task.task_number[:task.task_number.find('.')+1]+
                                              task.task_number[task.task_number.find('.')+2])
         result_tasks.append(populated_task)
-    return lesson_tasks
+    return result_tasks
 
 
 @login_required
