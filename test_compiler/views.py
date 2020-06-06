@@ -92,6 +92,7 @@ def all_paragraphs(request, class_id):
                                                    'classes': classes})
 
 
+
 def program(request):
     classes = [par.class_id for par in models.Paragraph.objects.distinct('class_id').all()]
 
