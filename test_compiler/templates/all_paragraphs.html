@@ -16,16 +16,17 @@
 
 {% block menu %}
     <H4><a href="{% url "school_tasks" %}">Изучаемые темы</a></H4>
+
     {% for cur_class in classes %}
-        {% if cur_class == class_ %}
-            <a class="nav-link disabled" href="{% url "all_paragraphs" cur_class %}">
+        {% if cur_class != class_ %}
+            <a class="nav-link active" href="{% url "all_paragraphs" cur_class %}">
                 <H5>{{ cur_class }} класс.</H5>
             </a>
         {% endif %}
     {% endfor %}
     {% for cur_class in classes %}
-        {% if cur_class != class_ %}
-            <a class="nav-link active" href="{% url "all_paragraphs" cur_class %}">
+        {% if cur_class == class_ %}
+            <a class="nav-link disabled" href="{% url "all_paragraphs" cur_class %}">
                 <H5>{{ cur_class }} класс.</H5>
             </a>
         {% endif %}
