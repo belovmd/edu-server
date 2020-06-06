@@ -5,7 +5,7 @@
 {% block content %}
     <H1>{{ paragraph.class_id }} класс. §{{ paragraph.paragraph_id }}. {{ paragraph.title }} </H1>
     <hr>
-    <h2>Задания с уроков:</h2>
+    <h2>Примеры:</h2>
         <ul>
             {% for cur_task in lesson_tasks %}
                <li><a class="nav-link" href="{{ cur_task.get_absolute_url }}">
