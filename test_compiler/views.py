@@ -26,8 +26,10 @@ def task_view(request, slug):
 
     lesson_tasks = tasks.filter(class_homework='lesson').order_by('task_number').all()
     hw_tasks = tasks.filter(class_homework='homework').order_by('task_number').all()
-    paragraph = models.Paragraph.objects.filter(paragraph_id=task.paragraph,
-                                                class_id=task.class_id)
+    paragraph = get_object_or_404(models.Paragraph,
+                                  paragraph_id=task.paragraph,
+                                  class_id=task.class_id)
+
     return render(request, 'task.html', {'lesson_tasks': lesson_tasks,
                                          'hw_tasks': hw_tasks,
                                          'task': task,
