@@ -26,6 +26,7 @@
 {% block menu %}
     <H4><a href="{% url "school_tasks" %}">Изучаемые темы</a></H4>
     <H5><a href="{% url "all_paragraphs" paragraph.class_id %}">{{ paragraph.class_id }} класс.</a></H5>
+    <H5><a href="{% url "all_paragraphs" paragraph.class_id %}">Перечень параграфов.</a></H5>
     {% for cur_paragraph in paragraphs %}
         {% if cur_paragraph == paragraph %}
             <a class="nav-link disabled" href="{% url "all_tasks" cur_paragraph.class_id cur_paragraph.paragraph_id %}">
