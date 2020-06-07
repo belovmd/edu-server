@@ -83,6 +83,12 @@
                 outp.setValue(data.data);
             });
         }
+
+        function resetCode() {
+            $.post('.', {}, function (data, status) {
+                editor.getDoc().setValue(data.data);
+            });
+        }
     </script>
 {% endblock %}
 

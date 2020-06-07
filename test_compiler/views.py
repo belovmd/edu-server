@@ -48,20 +48,23 @@ def index(request):
 @login_required
 def task_view(request, slug):
     task = get_object_or_404(models.Task, slug=slug)
-    tasks = models.Task.objects.filter(class_id=task.class_id,
-                                       paragraph=task.paragraph)
+    if request.method == 'POST':
+        return JsonResponse({"data": task.task_snippet})
+    else:
+        tasks = models.Task.objects.filter(class_id=task.class_id,
+                                           paragraph=task.paragraph)
 
-    lesson_tasks = tasks.filter(class_homework='lesson').order_by('task_number').all()
-    hw_tasks = tasks.filter(class_homework='homework').order_by('task_number').all()
-    paragraph = get_object_or_404(models.Paragraph,
-                                  paragraph_id=task.paragraph,
-                                  class_id=task.class_id)
-    populated_lesson = _modify_lesson_tasks(lesson_tasks)
-    populated_hw = _modify_hw_tasks(hw_tasks)
-    return render(request, 'task.html', {'lesson_tasks': populated_lesson,
-                                         'hw_tasks': populated_hw,
-                                         'task': task,
-                                         'paragraph': paragraph})
+        lesson_tasks = tasks.filter(class_homework='lesson').order_by('task_number').all()
+        hw_tasks = tasks.filter(class_homework='homework').order_by('task_number').all()
+        paragraph = get_object_or_404(models.Paragraph,
+                                      paragraph_id=task.paragraph,
+                                      class_id=task.class_id)
+        populated_lesson = _modify_lesson_tasks(lesson_tasks)
+        populated_hw = _modify_hw_tasks(hw_tasks)
+        return render(request, 'task.html', {'lesson_tasks': populated_lesson,
+                                             'hw_tasks': populated_hw,
+                                             'task': task,
+                                             'paragraph': paragraph})
 
 
 @login_required
